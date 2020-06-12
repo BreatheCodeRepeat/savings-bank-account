@@ -1,10 +1,5 @@
 package com.banking.api.savings.models.enums;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonProperty;
-
-@JsonFormat(shape = JsonFormat.Shape.OBJECT)
 public enum SavingsAccountMessageEnum implements MessageEnums {
 
     OPEN("User has opened a savings account", 1),
