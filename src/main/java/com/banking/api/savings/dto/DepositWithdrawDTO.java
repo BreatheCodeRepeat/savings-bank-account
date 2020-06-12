@@ -7,7 +7,7 @@ public class DepositWithdrawDTO {
     private double amount;
     private String type;
 
-    public DepositWithdrawDTO(@JsonProperty("amount") double amount, @JsonProperty("type")  String type) {
+    public DepositWithdrawDTO(@JsonProperty("amount") double amount, @JsonProperty("type") String type) {
         this.amount = amount;
         this.type = type;
     }

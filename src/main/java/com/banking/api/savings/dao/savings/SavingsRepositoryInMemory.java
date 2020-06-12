@@ -28,6 +28,12 @@ public class SavingsRepositoryInMemory implements SavingsDAO {
     }
 
     @Override
+    public SavingsAccountStateEnum getAccountState(User user) {
+        SavingAccount savingAccount = savingsAccounts.get(user.getUserID());
+        return savingAccount != null ? savingAccount.getStatus() : SavingsAccountStateEnum.DOES_NOT_EXIST;
+    }
+
+    @Override
     public boolean updateAccountValue(User userID, double amount) {
         SavingAccount savingAccount = savingsAccounts.get(userID.getUserID());
 

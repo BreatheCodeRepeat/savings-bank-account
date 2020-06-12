@@ -6,12 +6,15 @@ import java.time.ZoneId;
 
 public class DateTimeUtils {
 
-    private static final String zoneID = "Europe/Bucharest";
-    private static final LocalDateTime localDateTime = LocalDateTime.now(ZoneId.of(zoneID));
+    private static final String ZONE_ID = "Europe/Bucharest";
+    private static final int OPENING_HOURS = 8;
+    private static final int CLOSING_HOURS = 18;
+    private static final int ZERO_MINUTES = 0;
+    private static final LocalDateTime localDateTime = LocalDateTime.now(ZoneId.of(ZONE_ID));
 
 
-    public static boolean isWeekDay(){
-        switch (localDateTime.getDayOfWeek()){
+    public static boolean isWeekDay() {
+        switch (localDateTime.getDayOfWeek()) {
             case SATURDAY:
                 return false;
             case SUNDAY:
@@ -21,15 +24,15 @@ public class DateTimeUtils {
         }
     }
 
-    public static boolean isWorkingHours(){
-        LocalTime startingHour = LocalTime.of(8,0);
-        LocalTime closingHour = LocalTime.of(18,0);
-        LocalTime currentHour = LocalTime.of(localDateTime.getHour(),0);
+    public static boolean isWorkingHours() {
+        LocalTime startingHour = LocalTime.of(OPENING_HOURS, ZERO_MINUTES);
+        LocalTime closingHour = LocalTime.of(CLOSING_HOURS, ZERO_MINUTES);
+        LocalTime currentHour = LocalTime.of(localDateTime.getHour(), ZERO_MINUTES);
 
-        return isTimeInRange(currentHour,startingHour,closingHour);
+        return isTimeInRange(currentHour, startingHour, closingHour);
     }
 
-    public static boolean isTimeInRange(LocalTime checkDate, LocalTime firstDate, LocalTime secondDate){
-        return !(checkDate.isBefore(firstDate) || firstDate.isAfter(secondDate));
+    public static boolean isTimeInRange(LocalTime checkDate, LocalTime firstDate, LocalTime secondDate) {
+        return !(checkDate.isBefore(firstDate) || checkDate.isAfter(secondDate));
     }
 }

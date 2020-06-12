@@ -1,4 +1,4 @@
-package com.banking.api.savings.models.enums;
+package com.banking.api.savings.dto.enums;
 
 public enum SavingsAccountMessageEnum implements MessageEnums {
 
@@ -14,7 +14,9 @@ public enum SavingsAccountMessageEnum implements MessageEnums {
 
     SUCCESSFUL_DEPOSIT("User has made a successful deposit", 6),
 
-    SUCCESSFUL_WITHDRAWAL("User has made a successful withdrawal", 7);
+    SUCCESSFUL_WITHDRAWAL("User has made a successful withdrawal", 7),
+
+    ACCOUNT_IS_PENDING("User has made the opening action outside of working hours", 8);
 
     private String message;
     private int code;

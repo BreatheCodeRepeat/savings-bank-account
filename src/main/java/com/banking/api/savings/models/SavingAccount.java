@@ -21,6 +21,10 @@ public class SavingAccount {
         this.status = status;
     }
 
+    public SavingsAccountStateEnum getStatus() {
+        return status;
+    }
+
     public void setAmount(double amount) {
         this.amount = amount;
     }

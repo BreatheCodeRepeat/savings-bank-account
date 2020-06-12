@@ -1,4 +1,4 @@
-package com.banking.api.savings.models.enums;
+package com.banking.api.savings.dto.enums;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 

@@ -1,9 +1,10 @@
 package com.banking.api.savings.services;
 
 import com.banking.api.savings.dao.savings.SavingsDAO;
+import com.banking.api.savings.dto.enums.UserMessage;
 import com.banking.api.savings.models.User;
-import com.banking.api.savings.models.enums.MessageEnums;
-import com.banking.api.savings.models.enums.SavingsAccountMessageEnum;
+import com.banking.api.savings.dto.enums.MessageEnums;
+import com.banking.api.savings.dto.enums.SavingsAccountMessageEnum;
 import com.banking.api.savings.models.enums.SavingsAccountStateEnum;
 import com.banking.api.savings.utils.time.DateTimeUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +31,11 @@ public class SavingsService {
                 return SavingsAccountMessageEnum.PENDING;
             }
         }
+
+        if(savingsDAO.getAccountState(user) == SavingsAccountStateEnum.PENDING){
+            return SavingsAccountMessageEnum.ACCOUNT_IS_PENDING;
+        }
+
         return SavingsAccountMessageEnum.CREATED;
     }
 
@@ -39,6 +45,10 @@ public class SavingsService {
 
         if (!savingsDAO.hasSavingAccount(user)) {
             return SavingsAccountMessageEnum.DOES_NOT_EXIST;
+        }
+
+        if (savingsDAO.getAccountState(user) == SavingsAccountStateEnum.PENDING) {
+            return SavingsAccountMessageEnum.ACCOUNT_IS_PENDING;
         }
 
         if (leftBalance < 0) {
@@ -54,6 +64,10 @@ public class SavingsService {
 
         if (!savingsDAO.hasSavingAccount(user)) {
             return SavingsAccountMessageEnum.DOES_NOT_EXIST;
+        }
+
+        if (savingsDAO.getAccountState(user) == SavingsAccountStateEnum.PENDING) {
+            return SavingsAccountMessageEnum.ACCOUNT_IS_PENDING;
         }
 
         savingsDAO.updateAccountValue(user, totalBalance);

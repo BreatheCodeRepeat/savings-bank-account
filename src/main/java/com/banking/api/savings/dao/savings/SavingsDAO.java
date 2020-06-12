@@ -6,6 +6,8 @@ import com.banking.api.savings.models.enums.SavingsAccountStateEnum;
 public interface SavingsDAO {
     boolean hasSavingAccount(User user);
 
+    SavingsAccountStateEnum getAccountState(User user);
+
     double getBalance(User user);
 
     boolean updateAccountValue(User user, double amount);
