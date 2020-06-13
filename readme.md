@@ -47,13 +47,17 @@ or
 
 ## Users
 
-Being a savings microservice the user storing is not relevant for the project. The users passwords are stored in an unsecure fashion in plain text. To select an user you simply add the param to any request.
+Being a savings microservice the user storing is not relevant for the project. The users passwords are stored in an unsecure fashion in plain text. To select an user you simply add two params ( userName and password ) to any request.
 
 Example
 
 ```
 ?userName=Alex&password=12345
 ```
+
+## Storage
+
+The data is stored in memory with a list and a map. There is no need for a database set-up.
 
 ## Responses
 
