@@ -61,7 +61,7 @@ The data is stored in memory with a list and a map. There is no need for a datab
 
 ## Responses
 
-The response send back by the server contains and status code and a message that the user will see in frontend.
+The response send back by the server contains status code and a message that the user will see in frontend.
 
 A response has the following format
 
