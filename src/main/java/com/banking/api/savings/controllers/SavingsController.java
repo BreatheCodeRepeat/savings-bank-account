@@ -1,12 +1,14 @@
 package com.banking.api.savings.controllers;
 
 import com.banking.api.savings.dto.DepositWithdrawDTO;
+import com.banking.api.savings.dto.enums.ControllerErrorMessageEnum;
 import com.banking.api.savings.models.User;
 import com.banking.api.savings.dto.enums.MessageEnums;
 import com.banking.api.savings.dto.enums.UserMessage;
 import com.banking.api.savings.services.SavingsService;
 import com.banking.api.savings.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
@@ -36,8 +38,12 @@ public class SavingsController {
                                                             @RequestBody DepositWithdrawDTO dto) {
 
         Optional<User> user = userService.getUserNameAndPassWord(userName, password);
-        if (user.isPresent()) {
 
+        if (StringUtils.isEmpty(dto.getType()) || StringUtils.isEmpty(dto.getAmount())) {
+            return ControllerErrorMessageEnum.NOT_A_VALID_REQUEST_BODY;
+        }
+
+        if (user.isPresent()) {
             if (dto.getType().equals("withdraw")) {
                 return savingsService.withdrawFromSavingsAccount(user.get(), dto.getAmount());
             } else if (dto.getType().equals("deposit")) {

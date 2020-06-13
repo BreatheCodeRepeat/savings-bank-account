@@ -1,8 +1,8 @@
 package com.banking.api.savings.dto.enums;
 
-public enum UserMessage implements MessageEnums {
+public enum ControllerErrorMessageEnum implements MessageEnums {
 
-    USER_DOES_NOT_EXIST("User does not exist", 9);
+    NOT_A_VALID_REQUEST_BODY("Invalid request body", 10);
 
     private String message;
     private int code;
@@ -17,7 +17,7 @@ public enum UserMessage implements MessageEnums {
         return code;
     }
 
-    UserMessage(String message, int code) {
+    ControllerErrorMessageEnum(String message, int code) {
         this.message = message;
         this.code = code;
     }
