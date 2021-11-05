@@ -1,6 +1,6 @@
 # Savings Account Banking
 
-This project represent a savings account microservice for opening a savings account in bank. The code is written in Spring Boot.
+This project represent a savings account microservice for opening a savings account in bank. The code is written in Java with Spring Boot.
 
 ## Installation
 
